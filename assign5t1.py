@@ -5,17 +5,20 @@ def entries():
         name=input("Enter the name of student:")
         marks=int(input(f"{name}'s Marks:"))
         my_dict[name]=marks
-def show():
-    print("Student Details:")
-    for key in my_dict:
-        print(f"Name:{key}, Marks:{my_dict[key]}")
-    else:
-        print("No more entries.")
-my_dict={}
-choice=int(input("Enter 1 to add entries, 2 to show details:"))
-if choice==1:
-    entries()
-elif choice==2:
     show()
-else:
-    print("Invalid choice. Please enter 1 or 2.")
+def show():
+    std=input("Enter the name of student to show details or 'all' to show all details:")
+    if std in my_dict:
+        print(f"Name:{std}, Marks:{my_dict[std]}")
+    elif std=="all":
+        for name,marks in my_dict.items():
+            print(f"Name:{name}, Marks:{marks}")
+    else:
+        print("Student not found.")
+    x=input("Do you want to continue? (yes/no):")
+    if x.lower()=="yes":
+        entries()
+    else:
+        print("Exiting the program.")
+my_dict={}
+entries()
